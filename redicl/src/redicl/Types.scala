@@ -22,6 +22,7 @@ trait Types extends LowPrio:
   extension (w: Writable)
     def bs: BulkString = w
   object Writable:
+    def apply(bs: BulkString): Writable = bs
     given [A](using f: Conversion[A, BulkString]): Conversion[A, Writable] =
       a => f(a)
 
