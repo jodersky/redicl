@@ -1,5 +1,8 @@
 # A Simple Redis Client
 
+[![version](https://img.shields.io/maven-central/v/io.crashbox/redicl_3)](https://search.maven.org/artifact/io.crashbox/redicl_3/)
+[![stability: soft](https://img.shields.io/badge/stability-soft-white)](https://www.crashbox.io/stability.html)
+
 ```scala
 val client = redicl.default.Redis("localhost", 6379)
 
