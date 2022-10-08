@@ -1,0 +1,7 @@
+#!/bin/bash
+set -o errexit
+
+./mill mill.scalalib.PublishModule/publishAll \
+    --sonatypeCreds "8VNUX6+2:$(pass infra/ci-sonatype | head -n 1)" \
+    --release true \
+    --publishArtifacts __.publishArtifacts
