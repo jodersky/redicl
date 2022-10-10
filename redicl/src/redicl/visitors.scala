@@ -95,7 +95,7 @@ object LongVisitor extends SimpleVisitor[Long]:
   override def visitNum(value: Long): Long = value
 
 // parses a nested two-element array as a map
-class ResultSetVisitor[A](elementVisitor: Visitor[A]) extends SimpleVisitor[LinkedHashMap[String, A]]:
+class ResultSetVisitor[A](elementVisitor: => Visitor[A]) extends SimpleVisitor[LinkedHashMap[String, A]]:
   val elems = LinkedHashMap.empty[String, A]
   private var key: String = _
   private var isKey: Boolean = false
@@ -119,7 +119,7 @@ class ResultSetVisitor[A](elementVisitor: Visitor[A]) extends SimpleVisitor[Link
   override def visitNull() = elems
 
 // parses an array alternating between field key and value as a map
-class AttrVisitor[A](elementVisitor: Visitor[A]) extends SimpleVisitor[LinkedHashMap[String, A]]:
+class AttrVisitor[A](elementVisitor: => Visitor[A]) extends SimpleVisitor[LinkedHashMap[String, A]]:
   val elems = LinkedHashMap.empty[String, A]
   private var key: String = _
   private var isKey: Boolean = false
