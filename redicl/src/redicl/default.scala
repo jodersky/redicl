@@ -1,3 +1,3 @@
 package redicl
 
-object default extends RedisApi
+object default extends RedisApi with PoolApi
