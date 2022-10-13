@@ -1,7 +1,6 @@
 package redicl
 
-trait PoolApi:
-  self: redicl.RedisApi =>
+trait PoolApi extends ClientApi:
 
   /** A fixed-size connection pool.
     *

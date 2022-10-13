@@ -34,9 +34,11 @@ trait RediclModule extends ScalaModule with PublishModule {
 object redicl extends Module {
   object jvm extends RediclModule {
     object test extends Tests with Utest
+    def sources = T.sources(super.sources() ++ Seq(PathRef(millSourcePath / "src-jvm")))
   }
   object native extends RediclModule with ScalaNativeModule {
     object test extends Tests with Utest
     def scalaNativeVersion = "0.4.5"
+    def sources = T.sources(super.sources() ++ Seq(PathRef(millSourcePath / "src-native")))
   }
 }

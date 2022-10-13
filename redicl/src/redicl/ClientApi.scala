@@ -5,7 +5,7 @@ import java.io.OutputStream
 import collection.mutable
 import collection.mutable.LinkedHashMap
 
-trait RedisApi extends Types:
+trait ClientApi extends Types:
 
   type Key = String
   type FieldKey = String
