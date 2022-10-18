@@ -182,7 +182,8 @@ trait ClientApi extends Types:
         b += count
       exec(ResultSetVisitor(AttrVisitor(r)), b)
 
-    def xread(streams: Iterable[(Key, Id)], count: Int = -1, block: Int = -1) =
+    def xread[A](streams: Iterable[(Key, Id)], count: Int = -1, block: Int = -1)(using r: Reader[A])
+      : LinkedHashMap[Key, LinkedHashMap[Id, LinkedHashMap[FieldKey, A]]] =
       val b = mutable.ArrayBuffer.empty[BulkString]
       b += "XREAD"
       if count != -1 then
@@ -194,7 +195,7 @@ trait ClientApi extends Types:
       b += "STREAMS"
       for k <- streams.map(_._1) do b += k
       for v <- streams.map(_._2) do b += v
-      exec(RespBuilder, b)
+      exec(ResultSetVisitor(ResultSetVisitor(AttrVisitor(r))), b)
 
     def xgroupCreate(
         key: Key,
