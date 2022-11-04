@@ -1,5 +1,6 @@
-# A Simple Redis Client
+# A Redis Client
 
+[![project chat](https://img.shields.io/badge/zulip-join_chat-brightgreen.svg)](https://crashbox.zulipchat.com/#narrow/stream/353961-redicl)
 [![version](https://img.shields.io/maven-central/v/io.crashbox/redicl_3)](https://search.maven.org/artifact/io.crashbox/redicl_3/)
 [![stability: soft](https://img.shields.io/badge/stability-soft-white)](https://www.crashbox.io/stability.html)
 
@@ -24,8 +25,6 @@ client.get[String]("b")
 client.get[Int]("b")
 // val res6: Option[Int] = Some(1000)
 ```
-
-## Status
 
 - The core client code is implemented, allowing you to call any Redis command
   and interpreting the results as you wish.
